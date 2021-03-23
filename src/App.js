@@ -1,17 +1,19 @@
 import React from 'react'
-import FullCalendar from '@fullcalendar/react'
-import dayGridPlugin from '@fullcalendar/daygrid'
+import Main from './Main'
+import {Route, Switch} from 'react-router-dom'
+import {withRouter} from 'react-router'
+import Upload from './Upload'
 
 
-function App(props) {
-  console.log(props)
+function App() {
   return (
-      <FullCalendar
-        plugins={[ dayGridPlugin ]}
-        initialView="dayGridMonth"
-      />
+    <div>
+      <Switch>
+        <Route exact path="/" component={Main}/>
+        <Route exact path="/upload" component={Upload} />
+      </Switch>
+    </div>
   )
-  
 }
 
-export default App;
+export default (withRouter(App));
