@@ -1,7 +1,10 @@
 import React from "react"
 import styled from "styled-components"
 import TextField from '@material-ui/core/TextField';
+import CloseIcon from '@material-ui/icons/Close';
 import Button from '@material-ui/core/Button';
+import {useDispatch} from "react-redux"
+import { addCalendarFB } from "./redux/modules/calendar";
 
 
 
@@ -10,13 +13,15 @@ function Upload(props) {
 
   const time_text = React.useRef();
   const input_text = React.useRef();
-
+  const dispatch = useDispatch();
+  console.log(time_text.current)
+  console.log(input_text.current)
 
   return (
     <div>
       <Component/>
       <Container>
-        <Headline>일정 추가</Headline>
+        <h1>일정 추가</h1>
 
         <TextField
           inputRef ={time_text}
@@ -27,13 +32,33 @@ function Upload(props) {
           InputLabelProps={{
             shrink: true,
           }}/>
+          
         <TextField id="standard-basic" label="일정을 입력해주세요." inputRef ={input_text} />
         <Button variant="contained" color="primary" onClick = {() => {
-          console.log(input_text.current.value)
-          console.log(time_text.current.value) 
+          let schedule = {
+            date_time: time_text.current.value,
+            todo: input_text.current.value,
+          }
+          if (!time_text.current.value){
+            window.alert("날짜를 선택해주세요!😗")
+          } 
+          else if (!input_text.current.value){
+            window.alert("일정을 입력해주세요!🤨")
+          }
+          else {
+            dispatch(addCalendarFB(schedule))
+            window.setTimeout(()=>{
+              props.history.push('/')
+            }, 1000)
+          }
         }}>
-          ADD Schedule
+          추가하기
         </Button>
+        <ExitBtn onClick = {() => {
+        props.history.push('/')
+        }}>
+          <CloseIcon/>
+        </ExitBtn>
       </Container>
     </div>
   )
@@ -62,9 +87,14 @@ const Container = styled.div`
   align-items: center; 
   flex-direction: column; 
 `
-const Headline = styled.h1`
-
-
+const ExitBtn = styled.button`
+  position: fixed;
+  right: 5px;
+  top: 5px;
+  background-color: white;
+  outline: none;
+  border: none;
+  cursor: pointer;
 `
 
 
