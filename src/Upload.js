@@ -69,6 +69,7 @@ const Component = styled.div`
   height: 100vh;
   width: 100vw;
   background-color: silver;
+  z-index: 8;
 `
 
 const Container = styled.div`
@@ -86,6 +87,7 @@ const Container = styled.div`
   padding: 30px;
   align-items: center; 
   flex-direction: column; 
+  box-shadow: 0 3px 6px rgba(0,0,0,0.12), 0 2px 5px rgba(0,0,0,0.24);
 `
 const ExitBtn = styled.button`
   position: fixed;
