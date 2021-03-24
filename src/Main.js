@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
-import FloatBtn from './FloatBtn'
+import styled from "styled-components";
 import Modal from './Modal'
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
+import DoneIcon from '@material-ui/icons/Done';
 import {useSelector, useDispatch} from "react-redux";
 import {getCalendarFB} from "./redux/modules/calendar"
+
 
 
 function Main(props) {
@@ -15,17 +19,30 @@ function Main(props) {
   const [day_info, setDay] = useState()
   const [date_info, setDate] = useState()
   const [id_info, setId] = useState()
+  const [visible, isBtnOpen] = useState(true)
   const [status, isModalOpen] = useState(false)
   let calendar_list = []
+  let complete_list = []
 
   React.useEffect(() => {
     dispatch(getCalendarFB())
   }, [])
 
   calendar_list = schedule_list.map((r, idx) => {
-    return {title: r.todo, start: r.date, id: r.id}
+    return {title: r.title, start: r.date, id: r.id}
   }) 
   
+  complete_list = schedule_list.filter((r, idx) => {
+    console.log(r.completed)
+    if(r.completed === true){
+      return {...complete_list, r}
+    }
+  })
+  console.log(complete_list)
+  if (!complete_list[0]){
+    complete_list = null
+  }
+
   const openModal = (id) => {
     let daily_schedule = schedule_list.filter((schedule) => {
       if(schedule.id == id){
@@ -41,7 +58,7 @@ function Main(props) {
     if(hour > 12){
       hour = "0"+(hour-12)
     }
-    setTodo(daily_schedule[0].todo)
+    setTodo(daily_schedule[0].title)
     setTime(hour+":"+minute)
     setDay(day)
     setDate(daily_schedule[0].date.split('T')[0])
@@ -59,17 +76,56 @@ function Main(props) {
       <FullCalendar
           plugins={[ dayGridPlugin ]}
           initialView="dayGridMonth"
-          events = {calendar_list}
+          events = {visible ? calendar_list : complete_list}
           eventClick ={(info) => {
             openModal(info.event.id)
-          }    //함수를 만들어서 모달창을 뜰 수 있게한다.
-          }
+          }}
       />
-      <FloatBtn history = {props.history} />
-      <Modal id ={id_info} history = {props.history} date = {date_info} day = {day_info} time = {time_info} todo = {todo_info}  status = {status} close={closeModal} />
+      <AddBtn>
+        <Fab color="primary" aria-label="add" variant="extended" onClick = {() => {
+          props.history.push('/upload')
+        }}>
+          <AddIcon /> 일정추가
+        </Fab>
+      </AddBtn>
+      {visible ? (
+        <CompleteBtn>
+          <Fab color="secondary" aria-label="add" variant="extended" onClick = {() => {
+            isBtnOpen(false)
+          }}>
+            <DoneIcon/> 완료일정
+          </Fab>
+        </CompleteBtn>
+      ): null}
+      <EntireBtn>
+      <Fab color="secondary" aria-label="add" variant="extended" onClick = {() => {
+          isBtnOpen(true)
+        }}>
+          <DoneIcon/> 전체일정
+        </Fab>
+      </EntireBtn>
+      <Modal id ={id_info} date = {date_info} day = {day_info} time = {time_info} todo = {todo_info}  status = {status} close={closeModal} />
     </div>
   )
 }
 
+const AddBtn = styled.div`
+  position: fixed;
+  right: 10px;
+  bottom: 100px;
+  z-index: 10;
+`
+const CompleteBtn = styled.div`
+  position: fixed;
+  right: 10px;
+  bottom: 160px;
+  z-index: 10;
+`
+const EntireBtn = styled.div`
+  position: fixed;
+  right: 10px;
+  bottom: 160px;
+  z-index: 9;
+`
 
 export default Main;

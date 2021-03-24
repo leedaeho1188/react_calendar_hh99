@@ -22,15 +22,15 @@ export const removeCalendar = (schedule_id) => {
   return { type: REMOVE_CALENDAR, schedule_id};
 }
 
-export const updateCalendar = (schedule_update) => {
-  return { type: UPDATE_CALENDAR, schedule_update}
+export const updateCalendar = (schedule_id) => {
+  return { type: UPDATE_CALENDAR, schedule_id}
 }
 
 export const addCalendarFB = (schedule_info) => {
   return function (dispatch){
     let schedule = {
       date: schedule_info.date_time,
-      todo: schedule_info.todo,
+      title: schedule_info.todo,
       completed: false,
     };
     calendar_db.add(schedule).then((docRef) => {
@@ -101,6 +101,7 @@ export default function reducer(state = initialState, action ={}){
     case "calendar/UPDATE_CALENDAR": {
       const schedule_list = state.schedule.map((l, idx) =>{
         if(l.id === action.schedule_id){
+          console.log(l)
           return {...l, completed: true};
         }
         return l
