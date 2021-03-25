@@ -1,7 +1,7 @@
 import React from 'react'
 import {useState} from 'react';
 import moment from 'moment';
-import styled from 'styled-components'
+import styled, {keyframes} from 'styled-components'
 import CloseIcon from '@material-ui/icons/Close';
 
 function Calendar(props){
@@ -73,6 +73,9 @@ const calendarArr=()=>{
           <CloseIcon/>
         </ExitBtn>
       </Cal_Container>
+      <Box onClick={() => {
+        window.alert("😮 빠르시군요!")
+      }}>😛</Box>
     </>
   )
 }
@@ -103,7 +106,8 @@ const Cal_Container = styled.table`
   & > table {
     border-collapse: collapse;
     width: 100%;
-    height: 70%
+    height: 70%;
+    text-align: center;
   }
   & > .control {
     margin-bottom : 50px
@@ -141,10 +145,30 @@ const ExitBtn = styled.button`
   cursor: pointer;
 `
 const Day = styled.span`
-  @media (max-width:425px){
+  @media (max-width:550px){
     display: none
   }
 `
+const boxMove = keyframes`
+  0%{
+    top: 10px;
+  }
+  50%{
+    top: 400px;
+  }
+  100%{
+    top: 10px;
+  }
+`
+const Box = styled.div`
+  cursor: pointer;
+  top: 10px;
+  left: 50px;
+  position: absolute;
+  font-size: 30px;
+  animation: ${boxMove} 5s 1s infinite linear alternate;
+`
+
 
 export default Calendar
 

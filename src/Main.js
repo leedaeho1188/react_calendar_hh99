@@ -57,16 +57,15 @@ function Main(props) {
   }, [])
 
   calendar_list = schedule_list.map((r, idx) => {
-    return {title: r.title, start: r.date, id: r.id}
+    return {title: r.title, start: r.date, id: r.id, color: r.completed ? 'red': 'blue'}
   }) 
   
-  complete_list = schedule_list.filter((r, idx) => {
-    console.log(r.completed)
-    if(r.completed === true){
+  complete_list = calendar_list.filter((r, idx) => {
+    if(r.color === 'red'){
       return {...complete_list, r}
     }
   })
-  console.log(complete_list)
+
   if (!complete_list[0]){
     complete_list = null
   }
@@ -78,6 +77,11 @@ function Main(props) {
     <div>
       <FullCalendar
           plugins={[ dayGridPlugin ]}
+          headerToolbar={{
+            start: 'today',
+            center : 'title',
+            end: 'prev,next'
+          }}
           initialView="dayGridMonth"
           height = '100vh'
           events = {visible ? calendar_list: complete_list}
@@ -112,7 +116,7 @@ function Main(props) {
         <Fab  aria-label="add" variant="extended" onClick = {() => {
           props.history.push('/calendar')
         }}>
-          <CalendarTodayIcon/><Word>달력보기</Word>
+          &nbsp;<CalendarTodayIcon/>&nbsp;<Word>달력보기</Word>
         </Fab>
       </CalendarBtn>
       <Modal id ={id_info} date = {date_info} day = {day_info} time = {time_info} todo = {todo_info}  status = {status} close={closeModal} />

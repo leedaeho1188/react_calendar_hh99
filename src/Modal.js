@@ -17,10 +17,10 @@ const dispatch = useDispatch()
           <Component onClick = {close} />
           <ModalContainer>
             <h1>MY SCHEDULE</h1>
-            <div>
-              {date} {day} {time}
-            </div>
-            <div>{todo}</div>
+            <Text>
+              📅 &nbsp;{date} {day} {time}
+            </Text>
+            <Text>🏃‍♂️ &nbsp;{todo}</Text>
             <div className = 'modalBtn'>
               <Button variant="contained" color='secondary' onClick = {() => {
                 dispatch(removeCalendarFB(id))
@@ -91,6 +91,9 @@ const ExitBtn = styled.button`
   @media (max-width:450px){
     right: 30px;
   }
+`
+const Text = styled.div`
+  font-size: 20px
 `
 
 
