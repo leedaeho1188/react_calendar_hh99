@@ -21,7 +21,7 @@ const dispatch = useDispatch()
               {date} {day} {time}
             </div>
             <div>{todo}</div>
-            <div>
+            <div className = 'modalBtn'>
               <Button variant="contained" color='secondary' onClick = {() => {
                 dispatch(removeCalendarFB(id))
                 close()
@@ -65,6 +65,7 @@ const ModalContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
+  max-width: 700px; 
   width: 50vw;
   height: 50vh;
   border-radius: 10px;
@@ -72,6 +73,12 @@ const ModalContainer = styled.div`
   z-index: 20;
   opacity: 1;
   box-shadow: 0 3px 6px rgba(0,0,0,0.12), 0 2px 5px rgba(0,0,0,0.24);
+  @media (max-width:700px){
+    width: 70vw;
+  }
+  @media (max-width:450px){
+    width: 100vw;
+  }
 `
 const ExitBtn = styled.button`
   position: fixed;
@@ -81,6 +88,9 @@ const ExitBtn = styled.button`
   outline: none;
   border: none;
   cursor: pointer;
+  @media (max-width:450px){
+    right: 30px;
+  }
 `
 
 

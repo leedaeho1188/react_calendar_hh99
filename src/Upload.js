@@ -19,7 +19,9 @@ function Upload(props) {
 
   return (
     <div>
-      <Component/>
+      <Component onClick = {() => {
+          props.history.push('/')
+        }}/>
       <Container>
         <h1>일정 추가</h1>
 
@@ -69,7 +71,7 @@ const Component = styled.div`
   height: 100vh;
   width: 100vw;
   background-color: silver;
-  z-index: 8;
+  z-index: 20;
 `
 
 const Container = styled.div`
@@ -87,7 +89,14 @@ const Container = styled.div`
   padding: 30px;
   align-items: center; 
   flex-direction: column; 
+  z-index: 30;
   box-shadow: 0 3px 6px rgba(0,0,0,0.12), 0 2px 5px rgba(0,0,0,0.24);
+  @media (max-width:700px){
+    width: 70vw;
+  }
+  @media (max-width:450px){
+    width: 100vw;
+  }
 `
 const ExitBtn = styled.button`
   position: fixed;
@@ -97,6 +106,9 @@ const ExitBtn = styled.button`
   outline: none;
   border: none;
   cursor: pointer;
+  @media (max-width:450px){
+    right: 30px;
+  }
 `
 
 

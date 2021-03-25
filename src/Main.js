@@ -79,16 +79,17 @@ function Main(props) {
       <FullCalendar
           plugins={[ dayGridPlugin ]}
           initialView="dayGridMonth"
+          height = '100vh'
           events = {visible ? calendar_list: complete_list}
           eventClick ={(info) => {
             openModal(info.event.id)
           }}
+          
       />
       <AddBtn>
         <Fab color="primary" aria-label="add" variant="extended" onClick = {() => {
-          props.history.push('/upload')
-        }}>
-          <AddIcon /> 일정추가
+          props.history.push('/upload')}}>
+          <AddIcon /><Word>일정추가</Word>
         </Fab>
       </AddBtn>
       {visible ? (
@@ -96,7 +97,7 @@ function Main(props) {
           <Fab color="secondary" aria-label="add" variant="extended" onClick = {() => {
             isBtnOpen(false)
           }}>
-            <DoneIcon/> 완료일정
+            <DoneIcon/><Word>완료일정</Word>
           </Fab>
         </CompleteBtn>
       ): null}
@@ -104,14 +105,14 @@ function Main(props) {
         <Fab color="secondary" aria-label="add" variant="extended" onClick = {() => {
           isBtnOpen(true)
         }}>
-          <DoneIcon/> 전체일정
+          <DoneIcon/><Word>전체일정</Word>
         </Fab>
       </EntireBtn>
       <CalendarBtn>
         <Fab  aria-label="add" variant="extended" onClick = {() => {
           props.history.push('/calendar')
         }}>
-          <CalendarTodayIcon/> &nbsp; 달력보기
+          <CalendarTodayIcon/><Word>달력보기</Word>
         </Fab>
       </CalendarBtn>
       <Modal id ={id_info} date = {date_info} day = {day_info} time = {time_info} todo = {todo_info}  status = {status} close={closeModal} />
@@ -142,6 +143,11 @@ const CalendarBtn = styled.div`
   left: 10px;
   bottom: 100px;
   z-index: 9;
+`
+const Word = styled.span`
+  @media (max-width:425px){
+    display: none
+  }
 `
 
 export default Main;

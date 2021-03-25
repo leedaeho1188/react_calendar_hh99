@@ -40,7 +40,7 @@ export const addCalendarFB = (schedule_info) => {
   }
 }
 
-export const getCalendarFB = (schedule_list) => {
+export const getCalendarFB = () => {
   return function (dispatch){
     calendar_db.get().then((docs) => {
       let schedule_data = [];
@@ -78,13 +78,12 @@ export default function reducer(state = initialState, action ={}){
     case "calendar/GET_CALENDAR": {
       let schedule_data = [...state.schedule];
       const schedule_ids = state.schedule.map((r, idx) => {
-        return r.id;
+        return r.id; 
       })
       action.schedule_list.filter((r, idx) => {
         if(schedule_ids.indexOf(r.id) === -1){
           schedule_data = [...schedule_data, r]
-        }
-      })
+        }})
       return {...state, schedule: schedule_data}
     }
 
