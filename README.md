@@ -18,7 +18,7 @@
 
 2\. **React hook** 사용 (useState(), useDispatch(), useEffect(), useRef(), useSelect()) 
 
-3\. **styled-compone****nts**를 사용해서 화면을 꾸몄다.
+3\. **styled-components**를 사용해서 화면을 꾸몄다.
 
 4\. **State & Props**를 사용해서 자식컴포넌트로 data를 주었다.
 
@@ -26,7 +26,7 @@
 
 6\. **Redux** 를 사용해서 정보를 저장하고 불러왔다.
 
-7\. **Firebase(서버리스)**를 사용해서 data를 보관할 수 있게 했다. 
+7\. **Firebase**(서버리스)를 사용해서 data를 보관할 수 있게 했다. 
 
 8\. **middleware**를 사용해서 Fireabase와 Redux를 연결했다.
 
