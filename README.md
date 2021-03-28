@@ -2,10 +2,12 @@
 
 <img width="500" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FArdH2%2Fbtq1ca2veV3%2Fw05lNNJzfpjYzb61lGka61%2Fimg.png">
 
+[REACT_Calendar](https://react-calendar-bradlee.web.app/)
+<br/>
+
 항해99 4주차는 자신이 선택한 주특기 기본을 배우는 시간입니다. 저는 **리액트**를 주특기로 선택했고, 일주일동안 항해99에서 제공하는 **강의를 듣고** 프로젝트를 완성시켰습니다. 프로젝트는 **캘린더 만들기**였고 필수적으로 구현해야되는 기능들을 포함시키면서 만들었습니다.
 
-[REACT_Calendar](https://react-calendar-bradlee.web.app/)
-
+<br/>
 
 
 ## **사용한 개념**
@@ -38,9 +40,15 @@
 
 **full calendar**라는 **패키지**를 이용해서 캘린더를 만들었습니다. 그리고 나중에 다시 **moment js**를 이용해서 캘린더를 만들어보았습니다.
 
+<br/>
+
 <img width="500" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F3bxq2%2Fbtq091FtIbb%2Ffyq1TT4W3MmMkFf44NNNW0%2Fimg.png">
 
+<br/>
+
 <img width="500" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fbj9p0G%2Fbtq1dzHMGng%2FivPUperNBFDgtgYdsofu4K%2Fimg.png">
+
+<br/>
 
 ### 2.  **새로운 스케쥴 업로드 하고 추가하기**
 
@@ -48,7 +56,7 @@
 
 추가하기 버튼을 눌렀을 때 새로운 스케쥴이 firestore와 redux에 저장되고 메인 페이지로 넘어가서 useEffect를 사용해서 data를 불러오는 middleware 함수를 dispatch한다. 그다음에 useSelect를 사용해서 redux에 저장되어있는 값들을 불러와서 달력 페이지에 보여준다.
 
-
+<br/>
 
 ### 3\. **모달 창 띄우기(각 스케쥴 정보)(삭제하기 & 완료하기)**
 
@@ -58,13 +66,15 @@
 
 모달 창 안에는 해당 스케쥴 삭제 버튼과 완료 버튼이 있는데, 삭제 버튼을 누르면 firebase와 리덕스에 있는 해당 데이터를 id값으로 찾아서 **삭제**합니다. 완료 버튼은 id값으로 해당 데이터를 찾아서 completed 라는 데이터 키값을 true로 **업데이트** 합니다.  
 
-
+<br/>
 
 ### 4\. **완료된 스케쥴 만 보이게하기**
 
 일단 먼저, 캘린더 화면에 완료된 스케쥴은 빨간색으로 표시하고 완료되지 않은것은 파란색으로 표시했다. 
 
 완료일정 버튼을 눌렀을 때 캘린더 화면에 완료된 스케쥴 만 띄웠다. 그리고 다시 전제일정 버튼을 누르면 미완료된 스케쥴까지 보여지게했다. 이 기능 또한 **삼항 연산자**를 사용했는데 default 값을 true로 설정해서 버튼을 누르지 않을 때는 모든 스케쥴이 보이게 했고 완료일정 버튼을 눌렀을 때  false값을 줘서 완료된 스케쥴 data 리스트만 보내줘서 완료 스케쥴 만 보이게 했습니다.
+
+<br/>
 
 ### 5\. **웹 페이지를 반응형으로 만들기**
 
