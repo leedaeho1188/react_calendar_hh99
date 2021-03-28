@@ -1,5 +1,7 @@
 # REACT_Calendar
 
+<img width="500" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FArdH2%2Fbtq1ca2veV3%2Fw05lNNJzfpjYzb61lGka61%2Fimg.png">
+
 항해99 4주차는 자신이 선택한 주특기 기본을 배우는 시간입니다. 저는 **리액트**를 주특기로 선택했고, 일주일동안 항해99에서 제공하는 **강의를 듣고** 프로젝트를 완성시켰습니다. 프로젝트는 **캘린더 만들기**였고 필수적으로 구현해야되는 기능들을 포함시키면서 만들었습니다.
 
 [REACT_Calendar](https://react-calendar-bradlee.web.app/)
@@ -36,7 +38,9 @@
 
 **full calendar**라는 **패키지**를 이용해서 캘린더를 만들었습니다. 그리고 나중에 다시 **moment js**를 이용해서 캘린더를 만들어보았습니다.
 
+<img width="500" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F3bxq2%2Fbtq091FtIbb%2Ffyq1TT4W3MmMkFf44NNNW0%2Fimg.png">
 
+<img width="500" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fbj9p0G%2Fbtq1dzHMGng%2FivPUperNBFDgtgYdsofu4K%2Fimg.png">
 
 ### 2.  **새로운 스케쥴 업로드 하고 추가하기**
 
