@@ -5,6 +5,7 @@
 [REACT_Calendar](https://react-calendar-bradlee.web.app/)
 
 
+
 ## **사용한 개념**
 
 1\. **함수형** 컴포넌트만 사용(클래스 형 컴포넌트 ❌)
@@ -27,21 +28,23 @@
 
 9\. **Firebase**를 이용해서 REACT\_Calendar를 **배포**했다.
 
+
+
 ## **기능 구현**
 
 ### 1\. **캘린더 만들기**
 
 **full calendar**라는 **패키지**를 이용해서 캘린더를 만들었습니다. 그리고 나중에 다시 **moment js**를 이용해서 캘린더를 만들어보았습니다.
 
-[##_Image|kage@3bxq2/btq091FtIbb/fyq1TT4W3MmMkFf44NNNW0/img.png|alignCenter|data-filename="스크린샷(36).png" data-origin-width="950" data-origin-height="974" width="500" data-ke-mobilestyle="widthContent"|full-calendar 사용||_##]
 
-[##_Image|kage@bj9p0G/btq1dzHMGng/ivPUperNBFDgtgYdsofu4K/img.png|alignCenter|data-filename="스크린샷(38).png" data-origin-width="859" data-origin-height="811" width="500" data-ke-mobilestyle="widthContent"|moment js 사용||_##]
 
 ### 2.  **새로운 스케쥴 업로드 하고 추가하기**
 
 **Material UI**를 사용해서 시간과 일정을 입력할 수 있게 만들었다. 
 
 추가하기 버튼을 눌렀을 때 새로운 스케쥴이 firestore와 redux에 저장되고 메인 페이지로 넘어가서 useEffect를 사용해서 data를 불러오는 middleware 함수를 dispatch한다. 그다음에 useSelect를 사용해서 redux에 저장되어있는 값들을 불러와서 달력 페이지에 보여준다.
+
+
 
 ### 3\. **모달 창 띄우기(각 스케쥴 정보)(삭제하기 & 완료하기)**
 
@@ -50,6 +53,8 @@
 일단 스케쥴을 클릭했을 때 useState를 사용해서 해당 스케쥴 데이터를 Modal 컴포넌트에 props값으로 보내주고 모달창을 띄우는것은 **삼항 연산자**를 사용해서 기본 값을 false로 두고 스케쥴이 click 됬을 때만 true값으로 줘서 모달이 보이게 했습니다. 
 
 모달 창 안에는 해당 스케쥴 삭제 버튼과 완료 버튼이 있는데, 삭제 버튼을 누르면 firebase와 리덕스에 있는 해당 데이터를 id값으로 찾아서 **삭제**합니다. 완료 버튼은 id값으로 해당 데이터를 찾아서 completed 라는 데이터 키값을 true로 **업데이트** 합니다.  
+
+
 
 ### 4\. **완료된 스케쥴 만 보이게하기**
 
