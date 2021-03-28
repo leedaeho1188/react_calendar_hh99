@@ -2,7 +2,7 @@
 
 <img width="500" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FArdH2%2Fbtq1ca2veV3%2Fw05lNNJzfpjYzb61lGka61%2Fimg.png">
 
-[REACT_Calendar](https://react-calendar-bradlee.web.app/)
+**페이지 링크:** [REACT_Calendar](https://react-calendar-bradlee.web.app/)
 <br/>
 
 항해99 4주차는 자신이 선택한 주특기 기본을 배우는 시간입니다. 저는 **리액트**를 주특기로 선택했고, 일주일동안 항해99에서 제공하는 **강의를 듣고** 프로젝트를 완성시켰습니다. 프로젝트는 **캘린더 만들기**였고 필수적으로 구현해야되는 기능들을 포함시키면서 만들었습니다.
